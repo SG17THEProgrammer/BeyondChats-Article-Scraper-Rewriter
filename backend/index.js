@@ -7,8 +7,6 @@ const articleRoutes = require("./routes/articleRoutes");
 
 const app = express();
 
-import cors from "cors";
-
 app.use(
   cors({
     origin: process.env.FRONTEND_URL , 
