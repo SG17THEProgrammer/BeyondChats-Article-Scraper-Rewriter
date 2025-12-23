@@ -18,7 +18,7 @@ def google_search(query):
         "engine": "google",
         "q": query,
         "api_key": SERPAPI_KEY,
-        "num": 15
+        "num": 20
     }
 
     response = requests.get("https://serpapi.com/search", params=params)
