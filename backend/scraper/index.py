@@ -79,24 +79,31 @@ def main():
 
 
     print("Scraping reference articles...")
+    MIN_REFERENCES = 2
+
     scraped_contents = []
     reference_urls = []
 
     for r in filtered_results:
-        if len(scraped_contents) == 2:
+        if len(scraped_contents) >= MIN_REFERENCES:
             break
 
-        content = scrape_article(r["url"])
-        if content and len(content) > 500:  # quality check
-            scraped_contents.append(content)
-            reference_urls.append(r["url"])
+        try:
+            content = scrape_article(r["url"])
+            if content and len(content.strip()) > 400:
+                scraped_contents.append(content)
+                reference_urls.append(r["url"])
+                print(f"Scraped {len(scraped_contents)} → {r['url']}")
+        except Exception as e:
+            print(f"Failed to scrape {r['url']}: {e}")
 
-    if len(scraped_contents) == 0:
-        raise Exception("No valid reference articles found")
+    if len(scraped_contents) < MIN_REFERENCES:
+        raise Exception(
+            f"Only {len(scraped_contents)} valid references found. "
+            f"Need at least {MIN_REFERENCES}."
+        )
 
-    # Allow 1 article if only one is usable
-    print(f"Using {len(scraped_contents)} reference article(s)")
-
+    print(f"Using {len(scraped_contents)} reference articles")
 
     print("Rewriting article using Groq LLM...")
     updated_content = rewrite_article(
