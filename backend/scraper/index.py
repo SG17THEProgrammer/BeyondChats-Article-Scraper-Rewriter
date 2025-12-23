@@ -63,12 +63,12 @@ def main():
         print("Article not found")
         exit(1)
 
-    print("Article", article)
+    # print("Article", article)
 
     print("Searching Google...")
     google_results = google_search(article["title"])
 
-    print("GOOGLE RESULT", google_results)
+    # print("GOOGLE RESULT", google_results)
 
     existing_urls = fetch_existing_urls()
 
@@ -91,9 +91,12 @@ def main():
             scraped_contents.append(content)
             reference_urls.append(r["url"])
 
-    if len(scraped_contents) < 2:
-        raise Exception(
-            "Unable to find 2 valid blog articles from Google results")
+    if len(scraped_contents) == 0:
+        raise Exception("No valid reference articles found")
+
+    # Allow 1 article if only one is usable
+    print(f"Using {len(scraped_contents)} reference article(s)")
+
 
     print("Rewriting article using Groq LLM...")
     updated_content = rewrite_article(

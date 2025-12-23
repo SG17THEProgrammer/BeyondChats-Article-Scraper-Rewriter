@@ -1,8 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
 
 HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+     "Accept-Language": "en-US,en;q=0.9",
+    "Referer": "https://www.google.com/"
 }
 
 def scrape_article(url):
@@ -10,7 +15,7 @@ def scrape_article(url):
         response = requests.get(
             url,
             headers=HEADERS,
-            timeout=10,
+            timeout=15,
             verify=False   # 🔥 FIX
         )
         response.raise_for_status()

@@ -1,5 +1,7 @@
 from groq import Groq
 from config import GROQ_API_KEY , GROQ_MODEL
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 client = Groq(api_key=GROQ_API_KEY)
 
