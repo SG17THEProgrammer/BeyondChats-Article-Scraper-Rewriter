@@ -7,7 +7,15 @@ const articleRoutes = require("./routes/articleRoutes");
 
 const app = express();
 
-app.use(cors());
+import cors from "cors";
+
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL , 
+    methods: ["GET", "POST" , "PUT" , "PATCH"]
+  })
+);
+
 app.use(express.json());
 
 
@@ -15,8 +23,8 @@ app.use(express.json());
 app.use("/api/articles", articleRoutes);
 
 
-app.listen(4000, () => {
-    console.log("🚀 API running on http://localhost:4000");
+app.listen(process.env.PORT, () => {
+    console.log(`🚀 API running on http://localhost:${process.env.PORT}`);
 });
 
 mongoose.connect(process.env.MONGO_URI)
