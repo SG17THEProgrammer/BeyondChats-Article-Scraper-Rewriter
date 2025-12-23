@@ -222,6 +222,3 @@ No separate endpoint required.
 
 ---
 
-
-
-Just say 👍
