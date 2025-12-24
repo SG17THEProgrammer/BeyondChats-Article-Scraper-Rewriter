@@ -30,14 +30,13 @@ BeyondChats/
 │   ├── models/
 │   │   └── Article.js
 │   └── index.js
-│
-├── scraper/                # Python scraping & rewriting
-│   ├── index.py            # main rewrite pipeline
-│   ├── scrape.py           # BeyondChats scraper
-│   ├── google_search.py    # SERP API logic
-│   ├── scrape_article.py   # external article scraper
-│   └── llm_rewrite.py      # Groq LLM logic
-│   └── config.py           # For all API keys
+|   ├── scraper/                  # Python scraping & rewriting
+│         └── index.py            # main rewrite pipeline
+│         └── scrape.py           # BeyondChats scraper
+│         └── google_search.py    # SERP API logic
+│         └── scrape_article.py   # external article scraper
+│         └── llm_rewrite.py      # Groq LLM logic
+│         └── config.py           # For all API keys
 │
 ├── frontend/               # React application
 │   ├── src/
