@@ -222,3 +222,24 @@ No separate endpoint required.
 
 ---
 
+
+⚠️ Important Notes & Limitations
+
+🔒 Access Restrictions
+Some websites block automated scraping (403 / Access Denied). In such cases, only 1 reference article may be available instead of 2.
+
+☁️ Render Hosting Constraints
+The backend runs on Render, and many sites restrict cloud IPs — this can lead to fewer scrapeable sources.
+
+⏳ Performance Delay
+Scraping + rewriting is a background-heavy task. On Render, it may take slightly longer due to cold starts & limited resources.
+
+💻 Local vs Production
+
+Running locally:
+Faster execution ⚡
+Higher success rate for 2 or more  references ✅
+
+🎯 Intentional Design Choice
+No paid proxies used — kept cost-efficient, simple, and transparent.
+
