@@ -79,13 +79,11 @@ def main():
 
 
     print("Scraping reference articles...")
-    MIN_REFERENCES = 2
-
     scraped_contents = []
     reference_urls = []
 
     for r in filtered_results:
-        if len(scraped_contents) >= MIN_REFERENCES:
+        if len(scraped_contents) >= 2:
             break
 
         try:
@@ -97,13 +95,11 @@ def main():
         except Exception as e:
             print(f"Failed to scrape {r['url']}: {e}")
 
-    if len(scraped_contents) < MIN_REFERENCES:
-        raise Exception(
-            f"Only {len(scraped_contents)} valid references found. "
-            f"Need at least {MIN_REFERENCES}."
-        )
+    if len(scraped_contents) == 0:
+        raise Exception("No valid reference articles found")
 
-    print(f"Using {len(scraped_contents)} reference articles")
+    print(f"Using {len(scraped_contents)} reference article(s)")
+
 
     print("Rewriting article using Groq LLM...")
     updated_content = rewrite_article(

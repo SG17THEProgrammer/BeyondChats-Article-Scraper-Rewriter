@@ -25,11 +25,11 @@ const ArticleCard = ({ article }) => {
     const runUpdate = async (id) => {
         setLoading(true)
         try {
-            const res = await axios.post(`${import.meta.env.VITE_API_BASE}/${id}/rewrite`);
+            await axios.post(`${import.meta.env.VITE_API_BASE}/${id}/rewrite`);
             // console.log(res);
             setTimeout(() => {
                 alert("Article updated successfully");
-            }, 10000)
+            }, 20000)
         } catch (err) {
             alert("Failed to update article");
         }

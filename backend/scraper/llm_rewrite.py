@@ -6,6 +6,10 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 client = Groq(api_key=GROQ_API_KEY)
 
 def rewrite_article(original, references):
+
+    article_1 = references[0] if len(references) >= 1 else ""
+    article_2 = references[1] if len(references) >= 2 else ""
+
     prompt = f"""
 You are a senior SEO content editor.
 
@@ -25,10 +29,10 @@ ORIGINAL CONTENT (to improve):
 TOP-RANKING ARTICLES (style references):
 
 ARTICLE 1:
-{references[0]}
+{article_1}
 
 ARTICLE 2:
-{references[1]}
+{article_2}
 
 ---
 

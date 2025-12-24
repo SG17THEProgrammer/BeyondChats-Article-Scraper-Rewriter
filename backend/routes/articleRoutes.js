@@ -66,8 +66,13 @@ router.post("/:id/rewrite", async (req, res) => {
   });
 
   process.on("close", (code) => {
-    console.log(`Python process exited with code ${code}`);
-  });
+  if (code === 0) {
+    console.log("Rewrite completed successfully");
+  } else {
+    console.error("Rewrite failed");
+  }
+});
+
 
   res.json({ message: "Rewrite job started" });
 });
