@@ -58,7 +58,7 @@ BeyondChats/
 ---
 
 
-## Live (Hosted URL) 
+## ⚙️ Live (Hosted URL) 
 
 ```bash
 https://scarp-writing.netlify.app/
@@ -73,9 +73,10 @@ https://scarp-writing.netlify.app/
 ###  Clone Repository
 
 ```bash
-git clone https://github.com/your-username/beyondchats-assignment.git
-cd beyondchats-assignment
+git clone https://github.com/SG17THEProgrammer/BeyondChats-Article-Scraper-Rewriter.git
+
 ```
+
 
 
 ###  Backend Setup (Node.js)
@@ -107,9 +108,10 @@ Add `.env`:
 MONGO_URI=your_mongo_uri
 GROQ_API_KEY=your_groq_key
 SERP_API_KEY=your_serpapi_key
+GROQ_MODEL=your_groq_model
 ```
 
-Run initial scraper:
+Run initial scraper to scrap "Beyond Chats Website":
 
 ```bash
 python scrape.py
@@ -140,7 +142,8 @@ http://localhost:3000
 │        Frontend          │
 │      (ReactJS App)       │
 │                          │
-│ • View article list      │
+│ • View article list both │
+│  original and updated    │
 │ • View full article      │
 │ • Trigger rewrite action │
 │ • Show loading & status  │
@@ -153,7 +156,6 @@ http://localhost:3000
 │                          │
 │ • Article CRUD APIs      │
 │ • Rewrite trigger route  │
-│ • Status polling APIs    │
 │ • Python process spawn   │
 └──────────────┬───────────┘
                │ spawn() / child_process
@@ -200,13 +202,13 @@ http://localhost:3000
 
    * Searches article title on Google
    * Filters repetitve/unscrappable  links
-   * Scrapes content from top 2 articles
+   * Scrapes content from top 2 articles (if possible and available)
    * Uses Groq LLM to rewrite content
    * Stores updated article with references
      
 6. Backend updates
    
-7. Frontend polls status and updates UI
+7. Frontend accordingly updates the UI
 
 ---
 
@@ -227,7 +229,6 @@ No separate endpoint required.
 * ✅ Rewrite using Google-ranked articles
 * ✅ LLM-based content enhancement
 * ✅ Reference citation
-* ✅ Async processing with status tracking
 * ✅ Responsive React UI
 * ✅ Markdown rendering support
 
